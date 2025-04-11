@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.TimeUnit;
 
 @Component
-@ConditionalOnProperty(name = "distribute.type.lock", havingValue = "redisson")
+@ConditionalOnProperty(name = "distribute.lock.type", havingValue = "redisson")
 public class RedissonLockFactory implements DistributedLockFactory {
 
     private final Logger logger = LoggerFactory.getLogger(RedissonLockFactory.class);

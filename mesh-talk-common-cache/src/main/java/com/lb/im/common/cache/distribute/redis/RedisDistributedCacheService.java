@@ -22,7 +22,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 @Component
-@ConditionalOnProperty(name = "cache.type.distribute", havingValue = "redis")
+@ConditionalOnProperty(name = "distribute.cache.type", havingValue = "redis")
 public class RedisDistributedCacheService implements DistributedCacheService {
 
     private final Logger logger = LoggerFactory.getLogger(RedisDistributedCacheService.class);

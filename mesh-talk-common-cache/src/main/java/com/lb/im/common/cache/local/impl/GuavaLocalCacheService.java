@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnProperty(name = "cache.type.local", havingValue = "guava")
+@ConditionalOnProperty(name = "local.cache.type", havingValue = "guava")
 public class GuavaLocalCacheService<K, V> implements LocalCacheService<K, V> {
 
     private final Cache<K, V> cache = LocalGuavaCacheFactory.getLocalCache();
