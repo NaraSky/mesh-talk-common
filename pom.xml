@@ -11,6 +11,7 @@
     <modules>
         <module>mesh-talk-common-cache</module>
         <module>mesh-talk-common-domain</module>
+        <module>mesh-talk-common-mq</module>
     </modules>
 
     <properties>

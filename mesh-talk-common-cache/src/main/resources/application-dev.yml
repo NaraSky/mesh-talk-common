@@ -1,7 +1,7 @@
 # Spring应用配置，包含Redis连接参数和连接池设置
 spring:
   application:
-    name: spring-redis  # 应用名称
+    name: mesh-talk-common-cache  # 应用名称
 
   # Redis连接配置参数
   redis:

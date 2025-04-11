@@ -1,0 +1,8 @@
+rocketmq:
+  name-server: 117.72.33.162:9876
+  producer:
+    group: im-server-group
+
+message:
+  mq:
+    type: rocketmq
