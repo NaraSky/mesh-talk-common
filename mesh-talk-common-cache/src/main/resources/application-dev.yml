@@ -1,0 +1,38 @@
+# Spring应用配置，包含Redis连接参数和连接池设置
+spring:
+  application:
+    name: spring-redis  # 应用名称
+
+  # Redis连接配置参数
+  redis:
+    database: 0         # Redis数据库索引
+    host: 117.72.33.162 # Redis服务器IP地址
+    port: 6379          # Redis服务器端口
+    password:           # Redis认证密码（留空表示无需密码）
+    connect-timeout: 3000 # 连接超时时间（毫秒）
+    lettuce:
+      # Redis连接池配置参数
+      pool:
+        enabled: true    # 是否启用连接池
+        max-active: 8    # 最大活跃连接数
+        max-idle: 8      # 最大空闲连接数
+        min-idle: 0      # 最小空闲连接数
+        max-wait: 5000   # 连接等待超时时间（毫秒）
+      address: redis://117.72.33.162:6379 # Redis服务地址（URI格式）
+
+# 缓存类型配置，指定本地和分布式缓存实现
+cache:
+  type:
+    local: guava        # 本地缓存实现（Guava）
+    distribute: redis   # 分布式缓存实现（Redis）
+
+# 分布式锁和信号量实现配置
+distribute:
+  cache:
+    lock: redission     # 分布式锁实现（Redission）
+    semaphore: redission # 分布式信号量实现（Redission）
+
+# Redis部署模式配置
+redis:
+  arrange:
+    type: single # single or cluster # Redis部署模式（单节点或集群）

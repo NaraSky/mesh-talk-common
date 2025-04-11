@@ -18,7 +18,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <protostuff.version>1.7.4</protostuff.version>
-        <redisson.version></redisson.version>
     </properties>
 
     <dependencies>
