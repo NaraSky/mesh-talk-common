@@ -17,6 +17,7 @@ import java.util.Arrays;
  * Redisson配置类，根据不同的Redis部署类型（单节点或集群）创建对应的RedissonClient实例。
  */
 @Configuration
+@ConditionalOnProperty(name = "distributed.lock.type", havingValue = "redisson")
 public class RedissonConfig {
 
     @Value("${spring.redis.address}")
