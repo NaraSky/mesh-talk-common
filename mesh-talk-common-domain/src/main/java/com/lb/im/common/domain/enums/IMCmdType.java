@@ -27,7 +27,7 @@ public enum IMCmdType {
         return null;
     }
 
-    private Integer getCode() {
+    public Integer getCode() {
         return code;
     }
 }
