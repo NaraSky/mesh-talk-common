@@ -7,12 +7,12 @@ import java.util.List;
  */
 public class IMSendResult<T> extends TopicMessage {
 
-    private static final long serialVersionUID = 8026992050902848501L;
+    private static final long serialVersionUID = 6255973991282308490L;
 
     // 发送的用户
     private IMUserInfo fromUser;
     // 接收的用户
-    List<IMUserInfo> receivers;
+    private IMUserInfo receiver;
     // 指令类型
     private Integer code;
     private T data;
@@ -20,9 +20,9 @@ public class IMSendResult<T> extends TopicMessage {
     public IMSendResult() {
     }
 
-    public IMSendResult(IMUserInfo fromUser, List<IMUserInfo> receivers, Integer code, T data) {
+    public IMSendResult(IMUserInfo fromUser, IMUserInfo receiver, Integer code, T data) {
         this.fromUser = fromUser;
-        this.receivers = receivers;
+        this.receiver = receiver;
         this.code = code;
         this.data = data;
     }
@@ -35,12 +35,12 @@ public class IMSendResult<T> extends TopicMessage {
         this.fromUser = fromUser;
     }
 
-    public List<IMUserInfo> getReceivers() {
-        return receivers;
+    public IMUserInfo getReceiver() {
+        return receiver;
     }
 
-    public void setReceivers(List<IMUserInfo> receivers) {
-        this.receivers = receivers;
+    public void setReceiver(IMUserInfo receiver) {
+        this.receiver = receiver;
     }
 
     public Integer getCode() {
