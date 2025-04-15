@@ -32,6 +32,7 @@
         <zxing.version>3.3.3</zxing.version>
         <redisson.version>3.23.4</redisson.version>
         <guava.version>30.1-jre</guava.version>
+        <cola.version>3.0.0</cola.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
     </properties>
 
@@ -126,6 +127,18 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>cola-core</artifactId>
+                <version>${cola.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>cola-common</artifactId>
+                <version>${cola.version}</version>
             </dependency>
 
         </dependencies>

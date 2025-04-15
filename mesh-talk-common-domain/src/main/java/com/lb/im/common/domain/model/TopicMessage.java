@@ -1,11 +1,13 @@
 package com.lb.im.common.domain.model;
 
+import com.alibaba.cola.event.DomainEventI;
+
 import java.io.Serializable;
 
 /**
  * 基础消息
  */
-public class TopicMessage implements Serializable {
+public class TopicMessage implements DomainEventI {
 
     private static final long serialVersionUID = 5361804878646619571L;
 

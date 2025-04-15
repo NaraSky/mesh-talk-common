@@ -33,6 +33,15 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>cola-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>cola-common</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.lb</groupId>
