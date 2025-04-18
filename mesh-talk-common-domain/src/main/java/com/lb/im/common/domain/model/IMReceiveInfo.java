@@ -2,30 +2,43 @@ package com.lb.im.common.domain.model;
 
 import java.util.List;
 
-/**
- * 通用接收数据模型
- */
-public class IMReceiveInfo<T> extends TopicMessage {
+public class IMReceiveInfo extends TopicMessage {
 
-    private static final long serialVersionUID = 1L;
-    // 命令类型
+    private static final long serialVersionUID = -7962158433664656629L;
+    /**
+     * 命令类型 IMCmdType枚举的值
+     */
     private Integer cmd;
-    // 发送的用户
-    private IMUserInfo fromUser;
-    // 接收的用户
+
+    /**
+     * 发送消息的用户
+     */
+    private IMUserInfo sender;
+
+    /**
+     * 接收消息的用户列表
+     */
     List<IMUserInfo> receivers;
+
+    /**
+     * 是否需要回调发送结果
+     */
     private Boolean sendResult;
-    private T content;
+
+    /**
+     * 推送消息体
+     */
+    private Object data;
 
     public IMReceiveInfo() {
     }
 
-    public IMReceiveInfo(Integer cmd, IMUserInfo fromUser, List<IMUserInfo> receivers, Boolean sendResult, T content) {
+    public IMReceiveInfo(Integer cmd, IMUserInfo sender, List<IMUserInfo> receivers, Boolean sendResult, Object data) {
         this.cmd = cmd;
-        this.fromUser = fromUser;
+        this.sender = sender;
         this.receivers = receivers;
         this.sendResult = sendResult;
-        this.content = content;
+        this.data = data;
     }
 
     public Integer getCmd() {
@@ -36,12 +49,12 @@ public class IMReceiveInfo<T> extends TopicMessage {
         this.cmd = cmd;
     }
 
-    public IMUserInfo getFromUser() {
-        return fromUser;
+    public IMUserInfo getSender() {
+        return sender;
     }
 
-    public void setFromUser(IMUserInfo fromUser) {
-        this.fromUser = fromUser;
+    public void setSender(IMUserInfo sender) {
+        this.sender = sender;
     }
 
     public List<IMUserInfo> getReceivers() {
@@ -60,11 +73,11 @@ public class IMReceiveInfo<T> extends TopicMessage {
         this.sendResult = sendResult;
     }
 
-    public T getContent() {
-        return content;
+    public Object getData() {
+        return data;
     }
 
-    public void setContent(T content) {
-        this.content = content;
+    public void setData(Object data) {
+        this.data = data;
     }
 }

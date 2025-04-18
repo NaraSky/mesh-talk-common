@@ -5,41 +5,32 @@ spring:
   redis:
     database: 0
     host: 117.72.33.162
-    port: 6379
+    port: 16379
     password:
     timeout: 30000
     lettuce:
       pool:
-        # Redis连接池配置参数
         enabled: true
         max-active: 8
         max-idle: 8
         min-idle: 0
         max-wait: 5000
-    address: redis://117.72.33.162:6379
+    address: redis://117.72.33.162:16379
 
-# 本地缓存配置
 local:
   cache:
     type: guava
 
-# 分布式锁和缓存配置
 distribute:
   lock:
-    # 分布式锁实现类型配置
     type: redisson
   cache:
-    # 分布式缓存实现类型配置
     type: redis
 
-# Redis集群模式配置
 redis:
   arrange:
-    # Redis部署模式选择，single表示单实例模式
     type: single # single or cluster
 
-# 消息队列配置
 message:
   mq:
-    # 消息中间件类型配置
     type: rocketmq

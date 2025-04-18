@@ -18,7 +18,7 @@ public enum IMListenerType {
         this.desc = desc;
     }
 
-    public Integer code(){
+    public Integer getCode(){
         return this.code;
     }
 }

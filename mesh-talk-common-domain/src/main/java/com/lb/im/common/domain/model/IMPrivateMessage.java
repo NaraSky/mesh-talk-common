@@ -1,69 +1,83 @@
 package com.lb.im.common.domain.model;
 
-import com.lb.im.common.domain.enums.IMDeviceType;
+import com.lb.im.common.domain.enums.IMTerminalType;
 
 import java.util.List;
 
-/**
- * 私聊消息
- */
 public class IMPrivateMessage<T> {
 
-    // 发送者
-    private IMUserInfo fromUser;
-    // 接收者id
-    private Long receiverId;
-    // 接收者设备类型
-    private List<Integer> receiveDeviceTypes = IMDeviceType.getAllCode();
-    // 是否发送给自己的其他终端
-    private Boolean sendToself = true;
-    // 是否需要回推发送结果
+    /**
+     * 发消息的用户
+     */
+    private IMUserInfo sender;
+
+    /**
+     * 接收消息的用户id
+     */
+    private Long receiveId;
+
+    /**
+     * 接收者的终端类型
+     */
+    private List<Integer> receiveTerminals = IMTerminalType.getAllCode();
+
+    /**
+     * 是否发送给自己的其他终端,默认true
+     */
+    private Boolean sendToSelf = true;
+
+    /**
+     * 是否需要回推发送结果,默认true
+     */
     private Boolean sendResult = true;
-    // 消息内容
-    private T content;
+
+    /**
+     *  消息内容
+     */
+    private T data;
 
     public IMPrivateMessage() {
     }
 
-    public IMPrivateMessage(IMUserInfo fromUser, Long receiverId, List<Integer> receiveDeviceTypes, Boolean sendToself, Boolean sendResult, T content) {
-        this.fromUser = fromUser;
-        this.receiverId = receiverId;
-        this.receiveDeviceTypes = receiveDeviceTypes;
-        this.sendToself = sendToself;
+    public IMPrivateMessage(IMUserInfo sender, Long receiveId, List<Integer> receiveTerminals, Boolean sendToSelf, Boolean sendResult, T data) {
+        this.sender = sender;
+        this.receiveId = receiveId;
+        this.receiveTerminals = receiveTerminals;
+        this.sendToSelf = sendToSelf;
         this.sendResult = sendResult;
-        this.content = content;
+        this.data = data;
     }
 
-    public IMUserInfo getFromUser() {
-        return fromUser;
+    public IMUserInfo getSender() {
+        return sender;
     }
 
-    public void setFromUser(IMUserInfo fromUser) {
-        this.fromUser = fromUser;
+    public void setSender(IMUserInfo sender) {
+        this.sender = sender;
     }
 
-    public Long getReceiverId() {
-        return receiverId;
+    public Long getReceiveId() {
+        return receiveId;
     }
 
-    public void setReceiverId(Long receiverId) {
-        this.receiverId = receiverId;
+    public void setReceiveId(Long receiveId) {
+        this.receiveId = receiveId;
     }
 
-    public List<Integer> getReceiveDeviceTypes() {
-        return receiveDeviceTypes;
+    public List<Integer> getReceiveTerminals() {
+        return receiveTerminals;
     }
 
-    public void setReceiveDeviceTypes(List<Integer> receiveDeviceTypes) {
-        this.receiveDeviceTypes = receiveDeviceTypes;
+    public void setReceiveTerminals(List<Integer> receiveTerminals) {
+        this.receiveTerminals = receiveTerminals;
     }
 
-    public Boolean getSendToself() {
-        return sendToself;
+    public Boolean getSendToSelf() {
+        return sendToSelf;
     }
 
-    public void setSendToself(Boolean sendToself) {
-        this.sendToself = sendToself;
+    public void setSendToSelf(Boolean sendToSelf) {
+        this.sendToSelf = sendToSelf;
     }
 
     public Boolean getSendResult() {
@@ -74,11 +88,11 @@ public class IMPrivateMessage<T> {
         this.sendResult = sendResult;
     }
 
-    public T getContent() {
-        return content;
+    public T getData() {
+        return data;
     }
 
-    public void setContent(T content) {
-        this.content = content;
+    public void setData(T data) {
+        this.data = data;
     }
 }

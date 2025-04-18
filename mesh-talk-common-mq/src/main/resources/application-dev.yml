@@ -6,3 +6,4 @@ rocketmq:
 message:
   mq:
     type: rocketmq
+  type: rocketmq

@@ -1,20 +1,23 @@
 package com.lb.im.common.domain.model;
 
-/**
- * session信息
- */
 public class IMSessionInfo {
 
+    /**
+     * 用户id
+     */
     private Long userId;
-    // 设备类型
-    private Integer deviceType;
+
+    /**
+     * 终端类型
+     */
+    private Integer terminal;
 
     public IMSessionInfo() {
     }
 
-    public IMSessionInfo(Long userId, Integer deviceType) {
+    public IMSessionInfo(Long userId, Integer terminal) {
         this.userId = userId;
-        this.deviceType = deviceType;
+        this.terminal = terminal;
     }
 
     public Long getUserId() {
@@ -25,11 +28,11 @@ public class IMSessionInfo {
         this.userId = userId;
     }
 
-    public Integer getDeviceType() {
-        return deviceType;
+    public Integer getTerminal() {
+        return terminal;
     }
 
-    public void setDeviceType(Integer deviceType) {
-        this.deviceType = deviceType;
+    public void setTerminal(Integer terminal) {
+        this.terminal = terminal;
     }
 }

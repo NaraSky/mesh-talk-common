@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 /**
  * 设备类型
  */
-public enum IMDeviceType {
+public enum IMTerminalType {
 
     WEB(0, "web"),
     APP(1, "app");
@@ -15,13 +15,13 @@ public enum IMDeviceType {
     private final Integer code;
     private final String desc;
 
-    IMDeviceType(Integer code, String desc) {
+    IMTerminalType(Integer code, String desc) {
         this.code = code;
         this.desc = desc;
     }
 
-    public static IMDeviceType getByCode(Integer code) {
-        for (IMDeviceType deviceType : IMDeviceType.values()) {
+    public static IMTerminalType getByCode(Integer code) {
+        for (IMTerminalType deviceType : IMTerminalType.values()) {
             if (deviceType.getCode().equals(code)) {
                 return deviceType;
             }
@@ -34,6 +34,6 @@ public enum IMDeviceType {
     }
 
     public static List<Integer> getAllCode() {
-        return Arrays.stream(values()).map(IMDeviceType::getCode).collect(Collectors.toList());
+        return Arrays.stream(values()).map(IMTerminalType::getCode).collect(Collectors.toList());
     }
 }
