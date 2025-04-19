@@ -1,56 +1,107 @@
-# 🚀 Mesh-Talk-Common: 即时通讯的超级英雄工具箱 🦸‍♂️
+# 🚀 Mesh-Talk-Common: Superhero Toolkit for Instant Messaging 🦸‍♂️
 
 ![GitHub stars](https://img.shields.io/github/stars/NaraSky/mesh-talk-common?style=social) 
 ![GitHub forks](https://img.shields.io/github/forks/NaraSky/mesh-talk-common?style=social) 
 ![GitHub issues](https://img.shields.io/github/issues/NaraSky/mesh-talk-common)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-欢迎体验 **Mesh-Talk-Common**，一个为即时通讯（IM）系统打造的公共组件库！它就像是 IM 开发者的“瑞士军刀”，集成了高性能缓存、分布式锁、唯一 ID 生成器、消息队列支持等功能，让你的 IM 系统如虎添翼，轻松应对高并发、分布式环境下的各种挑战！💬💥
+Welcome to **Mesh-Talk-Common**, a powerful component library designed for Instant Messaging (IM) systems! Think of it as a "Swiss Army knife" for IM developers, integrating high-performance caching, distributed locks, unique ID generation, message queue support, and more. It empowers your IM system to effortlessly handle high concurrency and distributed environment challenges! 💬💥
 
----
+## 📑 Table of Contents
 
-## 🌟 为什么选择 Mesh-Talk-Common？
-
-想让你的 IM 系统快如闪电 ⚡、稳如磐石 🪨？Mesh-Talk-Common 提供了以下超能力：
-
-- **分布式缓存**：基于 Redis，解决缓存击穿、穿透、雪崩问题，像超级英雄一样守护你的数据库！🛡️
-- **分布式锁**：Redisson 驱动，线程安全无压力，确保热点数据重建不打架！🔒
-- **全局唯一 ID**：雪花算法生成 64 位 ID，性能炸裂，永不重复！❄️
-- **消息队列**：支持 RocketMQ 和 COLA 事件总线，异步消息投递稳准狠！📨
-- **本地缓存**：Guava Cache 加持，低延迟场景的秘密武器！⚡
-- **领域模型**：统一的 IM 消息、用户、会话模型，开发效率直接起飞！✈️
-
-> **一句话总结**：Mesh-Talk-Common 让你的 IM 系统开发省心省力，性能拉满，稳定在线！
+- [Why Choose Mesh-Talk-Common?](#-why-choose-mesh-talk-common)
+- [Features Overview](#️-features-overview)
+- [Architecture](#-architecture)
+- [Quick Start](#-quick-start)
+- [Core Features Explained](#-core-features-explained)
+- [Contribution Guidelines](#-contribution-guidelines)
+- [Getting Help](#-getting-help)
+- [Acknowledgements](#-acknowledgements)
+- [License](#-license)
 
 ---
 
-## 🛠️ 功能一览
+## 🌟 Why Choose Mesh-Talk-Common?
 
-| 模块 | 功能 | 超能力描述 |
-|------|------|-------------|
-| **mesh-talk-common-cache** | 分布式缓存、本地缓存、分布式锁、ID生成 | Redis + Guava + Redisson + Snowflake，性能与可靠性的完美组合！ |
-| **mesh-talk-common-domain** | 领域模型、常量、枚举、JWT | 统一的消息模型和认证工具，IM 开发从此井井有条！ |
-| **mesh-talk-common-mq** | 消息队列（RocketMQ/COLA） | 异步消息投递，事务消息支持，消息不丢不重！ |
+Want your IM system to be lightning-fast ⚡ and rock-solid 🪨? Mesh-Talk-Common provides these superpowers:
+
+- **Distributed Caching**: Redis-based solution that tackles cache penetration, breakdown, and avalanche issues, protecting your database like a superhero! 🛡️
+- **Distributed Locks**: Powered by Redisson, ensuring thread safety and controlled hot data rebuilding! 🔒
+- **Global Unique IDs**: Snowflake algorithm generating 64-bit IDs with explosive performance, never repeating! ❄️
+- **Message Queuing**: Support for RocketMQ and COLA event bus, delivering asynchronous messages reliably! 📨
+- **Local Caching**: Enhanced with Guava Cache, your secret weapon for low-latency scenarios! ⚡
+- **Domain Models**: Unified IM message, user, and session models that skyrocket development efficiency! ✈️
+
+> **In a nutshell**: Mesh-Talk-Common makes your IM system development effortless, maximizes performance, and ensures stability!
 
 ---
 
-## 🎉 快速开始
+## 🛠️ Features Overview
 
-### 前置条件
-- Java 8 或以上
+| Module | Functionality | Superpowers Description |
+|--------|--------------|-------------------------|
+| **mesh-talk-common-cache** | Distributed caching, local caching, distributed locks, ID generation | Redis + Guava + Redisson + Snowflake, the perfect combination of performance and reliability! |
+| **mesh-talk-common-domain** | Domain models, constants, enums, JWT | Unified message models and authentication tools, making IM development organized! |
+| **mesh-talk-common-mq** | Message queuing (RocketMQ/COLA) | Asynchronous message delivery, transaction message support, no message loss or duplication! |
+
+## 🏗 Architecture
+
+Mesh-Talk-Common is designed with a modular architecture that allows you to use components independently or together as a complete solution:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     Your IM Application                      │
+└───────────────────────────┬─────────────────────────────────┘
+                            │
+┌───────────────────────────▼─────────────────────────────────┐
+│                     Mesh-Talk-Common                         │
+│                                                              │
+│  ┌─────────────────┐   ┌─────────────────┐  ┌──────────────┐ │
+│  │      Cache      │   │     Domain      │  │      MQ      │ │
+│  │                 │   │                 │  │              │ │
+│  │ ┌─────────────┐ │   │ ┌─────────────┐ │  │┌────────────┐│ │
+│  │ │Distributed  │ │   │ │IM Models    │ │  ││Message     ││ │
+│  │ │Cache (Redis)│ │   │ │(User/Msg)   │ │  ││Sender      ││ │
+│  │ └─────────────┘ │   │ └─────────────┘ │  │└────────────┘│ │
+│  │                 │   │                 │  │              │ │
+│  │ ┌─────────────┐ │   │ ┌─────────────┐ │  │┌────────────┐│ │
+│  │ │Local Cache  │ │   │ │Constants    │ │  ││Event       ││ │
+│  │ │(Guava)      │ │   │ │& Enums      │ │  ││Handling    ││ │
+│  │ └─────────────┘ │   │ └─────────────┘ │  │└────────────┘│ │
+│  │                 │   │                 │  │              │ │
+│  │ ┌─────────────┐ │   │ ┌─────────────┐ │  │┌────────────┐│ │
+│  │ │Distributed  │ │   │ │JWT Utils    │ │  ││RocketMQ/   ││ │
+│  │ │Lock         │ │   │ │             │ │  ││COLA Support││ │
+│  │ └─────────────┘ │   │ └─────────────┘ │  │└────────────┘│ │
+│  │                 │   │                 │  │              │ │
+│  │ ┌─────────────┐ │   │ ┌─────────────┐ │  │              │ │
+│  │ │ID Generator │ │   │ │Exceptions   │ │  │              │ │
+│  │ │(Snowflake)  │ │   │ │             │ │  │              │ │
+│  │ └─────────────┘ │   │ └─────────────┘ │  │              │ │
+│  └─────────────────┘   └─────────────────┘  └──────────────┘ │
+└──────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🎉 Quick Start
+
+### Prerequisites
+- Java 8 or above
 - Maven 3.6+
-- Redis（用于分布式缓存和锁）
-- RocketMQ（可选，用于消息队列）
+- Redis (for distributed caching and locks)
+- RocketMQ (optional, for message queuing)
 - Spring Boot 2.x
 
-### 安装与使用
+### Installation and Usage
 
-1. **克隆仓库**：
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/your-username/mesh-talk-common.git
    ```
 
-2. **引入依赖**：
-   将 `mesh-talk-common` 作为 Maven 依赖引入你的项目：
+2. **Add as Maven dependency**:
+   Include `mesh-talk-common` as a Maven dependency in your project:
    ```xml
    <dependency>
        <groupId>com.lb.im</groupId>
@@ -59,8 +110,8 @@
    </dependency>
    ```
 
-3. **配置环境**：
-   在 `application.yml` 中配置 Redis、RocketMQ 等参数：
+3. **Configure environment**:
+   Set up Redis, RocketMQ, and other parameters in your `application.yml`:
    ```yaml
    spring:
      redis:
@@ -80,85 +131,85 @@
          type: rocketmq
    ```
 
-4. **开始使用**：
-    - **缓存操作**：
+4. **Start using**:
+    - **Cache operations**:
       ```java
       @Autowired
       private DistributedCacheService cacheService;
- 
-      // 设置缓存
+
+      // Set cache
       cacheService.set("user:1", new User("Alice"), 3600L, TimeUnit.SECONDS);
- 
-      // 获取缓存
+
+      // Get from cache
       User user = cacheService.getObject("user:1", User.class);
       ```
 
-    - **生成唯一 ID**：
+    - **Generate unique IDs**:
       ```java
       SnowFlake snowFlake = SnowFlakeFactory.getSnowFlakeFromCache();
       long uniqueId = snowFlake.nextId();
       ```
 
-    - **发送消息**：
+    - **Send messages**:
       ```java
       @Autowired
       private MessageSenderService messageSender;
- 
+
       TopicMessage message = new TopicMessage("im_message_private");
       messageSender.send(message);
       ```
 
 ---
 
-## 📖 核心功能详解
+## 📖 Core Features Explained
 
-### 1. 分布式缓存 🗄️
-- **Redis 驱动**：支持高效的缓存操作，结合 Jackson 序列化支持复杂对象。
-- **防缓存问题**：
-    - **穿透**：缓存空值，短 TTL 保护数据库。
-    - **击穿**：分布式锁 + 逻辑过期，热点数据安全重建。
-    - **雪崩**：异步缓存重建，旧数据继续服务。
-- 示例：
+### 1. Distributed Caching 🗄️
+- **Redis-powered**: Supports efficient cache operations with Jackson serialization for complex objects.
+- **Cache problem prevention**:
+    - **Penetration**: Caches null values with short TTL to protect the database.
+    - **Breakdown**: Distributed locks + logical expiration for safe hot data rebuilding.
+    - **Avalanche**: Asynchronous cache rebuilding, with old data continuing to serve.
+- Example:
   ```java
   User user = cacheService.queryWithPassThrough("user:", 1L, User.class, id -> dbService.findUser(id), 3600L, TimeUnit.SECONDS);
   ```
 
-### 2. 分布式锁 🔐
-- 使用 Redisson 实现，支持单节点和集群模式。
-- 提供多种加锁方式（tryLock、lock），确保线程安全。
-- 示例：
+### 2. Distributed Locks 🔐
+- Implemented with Redisson, supporting both single-node and cluster modes.
+- Provides various locking methods (tryLock, lock) to ensure thread safety.
+- Example:
   ```java
   DistributedLock lock = distributedLockFactory.getDistributedLock("lock:user:1");
   if (lock.tryLock(5, 10, TimeUnit.SECONDS)) {
       try {
-          // 执行业务逻辑
+          // Execute business logic
       } finally {
           lock.unlock();
       }
   }
   ```
 
-### 3. 雪花算法 ID 生成 ❄️
-- 64 位唯一 ID，包含时间戳、数据中心、机器 ID 和序列号。
-- 防时间回拨，性能高，适合分布式环境。
-- 示例：
+### 3. Snowflake ID Generation ❄️
+- 64-bit unique IDs containing timestamp, data center, machine ID, and sequence number.
+- Prevents time rollback issues, high performance, suitable for distributed environments.
+- Example:
   ```java
   SnowFlake snowFlake = SnowFlakeFactory.getSnowFlakeByDataCenterIdAndMachineIdFromCache(1L, 1L);
   long id = snowFlake.nextId();
   ```
 
-### 4. 消息队列 📨
-- 支持 RocketMQ（分布式）和 COLA（本地事件总线）。
-- 提供事务消息支持，确保消息投递一致性。
-- 示例：
+### 4. Message Queuing 📨
+- Supports RocketMQ (distributed) and COLA (local event bus).
+- Provides transaction message support, ensuring message delivery consistency.
+- Example:
   ```java
   TransactionSendResult result = messageSender.sendMessageTransaction(new TopicMessage("im_result_private"), null);
   ```
 
-### 5. 本地缓存 ⚡
-- 基于 Guava Cache，支持自定义容量和过期时间。
-- 适合低延迟、高频访问场景。
-- 示例：
+### 5. Local Caching ⚡
+- Based on Guava Cache, supporting custom capacity and expiration time.
+- Ideal for low-latency, high-frequency access scenarios.
+- Example:
   ```java
   @Autowired
   private LocalCacheService<String, String> localCache;
@@ -169,26 +220,41 @@
 
 ---
 
-## 🧑‍💻 贡献指南
+## 🧑‍💻 Contribution Guidelines
 
-我们欢迎任何形式的贡献！无论是修复 Bug、添加新功能还是改进文档，都让 Mesh-Talk-Common 变得更好！🌈
+We welcome contributions of all kinds! Whether fixing bugs, adding new features, or improving documentation, you're helping make Mesh-Talk-Common better! 🌈
 
-1. Fork 本仓库。
-2. 创建你的功能分支（`git checkout -b feature/awesome-feature`）。
-3. 提交你的更改（`git commit -m 'Add awesome feature'`）。
-4. 推送到远程分支（`git push origin feature/awesome-feature`）。
-5. 提交 Pull Request，我们会尽快审核！🚀
+1. Fork this repository.
+2. Create your feature branch (`git checkout -b feature/awesome-feature`).
+3. Commit your changes (`git commit -m 'Add awesome feature'`).
+4. Push to the branch (`git push origin feature/awesome-feature`).
+5. Submit a Pull Request, and we'll review it as soon as possible! 🚀
 
 ---
 
-## 🙌 致谢
+## 🙋‍♂️ Getting Help
 
-感谢所有为即时通讯系统开发默默付出的开发者！特别感谢以下开源项目：
+Need assistance? We've got you covered:
+
+- **GitHub Issues**: For bug reports and feature requests
+- **Discussions**: For general questions and community discussions
+- **Documentation**: Check our [Wiki](https://github.com/your-username/mesh-talk-common/wiki) for detailed guides
+
+---
+
+## 🙌 Acknowledgements
+
+Thanks to all developers who contribute to instant messaging system development! Special thanks to these open-source projects:
 - [Redis](https://redis.io/)
 - [Redisson](https://redisson.org/)
 - [RocketMQ](https://rocketmq.apache.org/)
 - [Guava](https://github.com/google/guava)
 - [Protostuff](https://github.com/protostuff/protostuff)
 
-> **让我们一起打造更强大的即时通讯系统！** 🚀
+---
 
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+> **Let's build more powerful instant messaging systems together!** 🚀
